@@ -79,6 +79,7 @@ const getGrade=(percentage)=>{
         [70,"B+"],
         [80,"A"],
         [90,"A+"]
+
     ]
     let grade=""
     grades.forEach((arr)=>{
@@ -90,13 +91,36 @@ const getGrade=(percentage)=>{
 
 //const n=getMetadat();
 //const r=getSub(n)
-const record={
-    eng:10,
-    math:20,
-    hindi:30
-}
-const percentage=getPercent(record)
-const getHighestscoring=getHighestScoringSub(record);
-const getgrade=getGrade(percentage)
-console.log(percentage)
-console.log(getHighestscoring)
+//const record={
+//    eng:10,
+//    math:20,
+//    hindi:30
+//}
+//const percentage=getPercent(record)
+//const getHighestscoring=getHighestScoringSub(record);
+//const getgrade=getGrade(percentage)
+//console.log(percentage)
+//console.log(getHighestscoring)
+
+const arr=[10,20,30]
+
+//using map
+const newArr=arr.map((a)=>{
+    return a*2
+})
+// reduce use case 1: sum
+const ans=arr.reduce((acc,ele)=>{
+    return acc + ele
+})
+//reduce use case 2:multiply
+const mul=arr.reduce((acc,ele)=>{
+    return acc * ele
+})
+const newArr2=arr.reduce((acc,ele)=>{
+    acc.push(ele*2)
+    return acc
+})
+//console.log(ans)
+//console.log(mul)
+//console.log(newArr)
+console.log(newArr2)
