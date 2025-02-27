@@ -12,25 +12,27 @@ body{
 }
 header{
     display: flex;
+    background-color: black;
     min-height: 65px;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    background-color: yellow;
+   
     grid-column-start: 1;
     grid-column-end: 3;
 }
 aside{
     min-height: 100vh;
-    background-color: aquamarine;
+   background-color: rgb(40, 37, 37);
 }
 main{
     min-height: 100vh;
-    background-color: blueviolet;
+
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit,20rem);
     grid-auto-rows: auto;
+    background-color: rgb(24, 22, 22);
     align-content: center;
     gap: 2rem;
     padding: 3rem 2rem;
@@ -41,6 +43,23 @@ main{
     
     background-color: orange;
     padding: 10px;
+}
+#searchedele{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit,20rem);
+    grid-auto-rows: auto;
+    align-content: center;
+}
+.card1{
+    height: fit-content;
+    width: fit-content;
+    background-color: orange;
+    padding: 10px;
+}
+.card1>iframe{
+    height: 200px;
+    width: fit-content;
 }
 .card:hover{
     scale: 1.1;

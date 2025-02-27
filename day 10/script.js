@@ -21,6 +21,10 @@ const showCards=(dataArr)=>{
         root.appendChild(newDiv)
     })
 }
+let timeoutId=null
 const handleSearch=(e)=>{
-    getData(e.target.value)
+    timeoutId=setTimeout(()=>{
+        getData(e.target.value)
+    },1000)
+    
 }
