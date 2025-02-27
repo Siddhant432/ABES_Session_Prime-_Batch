@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    
+    display: grid;
+    grid-template-rows: 5rem calc(100vh-5rem);
+    grid-template-columns: 100px  1fr;
+}
+header{
+    display: flex;
+    min-height: 65px;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: yellow;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+aside{
+    min-height: 100vh;
+    background-color: aquamarine;
+}
+main{
+    min-height: 100vh;
+    background-color: blueviolet;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit,20rem);
+    grid-auto-rows: auto;
+    align-content: center;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    
+}
+.card{
+    height: 250px;
+    
+    background-color: orange;
+    padding: 10px;
+}
+.card:hover{
+    scale: 1.1;
+    background-color: black;
+    color: white;
+}

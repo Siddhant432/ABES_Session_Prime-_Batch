@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #addcomment{
+            padding: 5px;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .comment{
+            padding: 5px;
+            border: 1px solid black;
+            text-align: center;
+            margin: 5px;
+            border-radius: 5px;
+            width: fit-content;
+            height: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    
+    <button><a href="index.html">Home</a></button>
+
+    <h4>Add a comment</h4>
+    <input type="text" id="commentInput" name="comment" placeholder="Enter a comment">
+    <button onclick="storeComment()">Submit</button>
+
+    <div id="addcomment"></div>
+
+    <script>
+        const iframe = document.querySelector('iframe');
+        const [a, videoId] = window.location.search.split('=');
+        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+
+        const youtubeHistory = localStorage.getItem('yt_history');
+        if (!youtubeHistory) {
+            localStorage.setItem("yt_history", JSON.stringify([videoId]));
+        } else {
+            const newHistory = JSON.parse(youtubeHistory);
+            if (!newHistory.includes(videoId)) {
+                newHistory.push(videoId);
+                localStorage.setItem("yt_history", JSON.stringify(newHistory));
+            }
+        }
+
+        const commentRoot = document.getElementById("addcomment");
+
+        const loadComments = () => {
+            commentRoot.innerHTML = "";  // Clear previous comments
+            const historyComment = localStorage.getItem(videoId);
+            if (historyComment) {
+                const commentArray = JSON.parse(historyComment);
+                commentArray.forEach((com) => {
+                    appendCommentToUI(com);
+                });
+            }
+        };
+
+        const storeComment = () => {
+            const commentInput = document.getElementById("commentInput");
+            const comment = commentInput.value.trim();
+            if (comment === "") return;
+
+            let commentHistory = localStorage.getItem(videoId);
+            let newCommentHistory = commentHistory ? JSON.parse(commentHistory) : [];
+            newCommentHistory.push(comment);
+            localStorage.setItem(videoId, JSON.stringify(newCommentHistory));
+
+            appendCommentToUI(comment);
+            commentInput.value = "";  // Clear input after adding
+        };
+
+        const appendCommentToUI = (comment) => {
+            const comm = document.createElement('div');
+            comm.className = "comment";
+            comm.innerHTML = `<p>${comment}</p>`;
+            commentRoot.appendChild(comm);
+        };
+
+        loadComments();
+    </script>
+</body>
+</html>
