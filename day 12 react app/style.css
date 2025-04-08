@@ -1,0 +1,22 @@
+.card{
+    margin: 1rem auto;
+    max-width: 480px;
+    background-color: yellow;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    text-align: center;
+}
+.card:hover{
+    transform:scale(1.1);
+    color: white;
+    background-color: black;
+}
+.submit{
+    background-color: green;
+    color: white;
+}
+.danger{
+    background-color: red;
+    color: white;
+}
